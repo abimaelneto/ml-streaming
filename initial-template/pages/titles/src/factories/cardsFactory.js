@@ -8,7 +8,7 @@ const cardListWorker = new Worker(`./src/workers/cardListWorker.js`, {
 });
 
 const factory = {
-  async initalize() {
+  async initialize() {
     return CardsController.initialize({
       view: new CardsView(),
       service: new CardsService({
