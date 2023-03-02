@@ -6,7 +6,7 @@ export default class HandGestureController {
   #view;
   #service;
   #camera;
-  #lastDirection = { direction: "", y: 0 };
+  #lastDirection = { direction: "", y: window.pageYOffset };
   constructor({ view, service, camera }) {
     this.#view = view;
     this.#service = service;

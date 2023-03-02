@@ -22,7 +22,6 @@ export default class HandGestureService {
       this.#getLandMarksFromKeypoints(keypoints3D),
       9
     );
-
     return predictions.gestures;
   }
 
