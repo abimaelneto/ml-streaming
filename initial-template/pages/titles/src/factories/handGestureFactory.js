@@ -4,6 +4,11 @@ import "https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.min.j
 import "https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection@2.0.0/dist/hand-pose-detection.min.js";
 import "https://cdn.jsdelivr.net/npm/fingerpose@0.1.0/dist/fingerpose.min.js";
 
+import {
+  fingerLookupIndexes,
+  gestureStrings,
+  knownGestures,
+} from "../util/util.js";
 import Camera from "../../../../lib/shared/camera.js";
 import HandGestureController from "./../controllers/handGestureController.js";
 import HandGestureView from "./../views/handGestureView.js";
@@ -15,11 +20,13 @@ const camera = await Camera.init();
 const factory = {
   async initalize() {
     return HandGestureController.initialize({
-      view: new HandGestureView(),
+      view: new HandGestureView({ fingerLookupIndexes }),
       service: new HandGestureService({
         fingerpose: window.fp,
         handPoseDetection: window.handPoseDetection,
         handsVersion: window.VERSION,
+        gestureStrings,
+        knownGestures,
       }),
       camera,
     });
