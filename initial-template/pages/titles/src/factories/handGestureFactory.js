@@ -16,11 +16,11 @@ import HandGestureService from "./../services/handGestureService.js";
 const [rootPath] = window.location.href.split("/pages/");
 
 const camera = await Camera.init();
-
+let styler = new PseudoStyler();
 const factory = {
   async initalize() {
     return HandGestureController.initialize({
-      view: new HandGestureView({ fingerLookupIndexes }),
+      view: new HandGestureView({ fingerLookupIndexes, styler }),
       service: new HandGestureService({
         fingerpose: window.fp,
         handPoseDetection: window.handPoseDetection,
